@@ -6,8 +6,26 @@
     font-family: Arial;
     font-size: 20px;
     font-weight: bold;
+    margin-top: 5px;
 }
 .user-tile{
-    border-left: 2px solid #f6f6f6;
+    color: #9c9c9c;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
     height: 50px;
+    align: right;
+    padding-top: 5px;
+}
+.border-left-tile{
+    border-left: 2px solid #e6e6e6;
+    height: 45px;
+    padding-top: 10px;
+    color: #acacac;
+    
+}
+.search-in{
+    height: 40%;
+    width:70%;
+    padding-bottom: 4px;
 }
