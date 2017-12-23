@@ -18,14 +18,21 @@
     padding-top: 5px;
 }
 .border-left-tile{
+    display: table;
     border-left: 2px solid #e6e6e6;
+    
     height: 45px;
-    padding-top: 10px;
     color: #acacac;
+    display: flex;
+    align-items: center;
     
 }
 .search-in{
-    height: 40%;
+    padding-top: 5px; 
     width:70%;
-    padding-bottom: 4px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+.search-bar{
+    height:30px;
 }
