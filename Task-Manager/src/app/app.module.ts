@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TasksPageComponent } from './tasks-page/tasks-page.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TasksPageComponent
+    TasksPageComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule

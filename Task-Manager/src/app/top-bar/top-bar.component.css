@@ -1,0 +1,26 @@
+.blue-title{
+    color: #667785;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.border-left-tile{
+    display: table;
+    border-left: 2px solid #e6e6e6;
+    
+    height: 45px;
+    color: #acacac;
+    display: flex;
+    align-items: center;
+    
+}
+.search-in{
+    padding-top: 5px; 
+    width:70%;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+.search-bar{
+    height:30px;
+}
