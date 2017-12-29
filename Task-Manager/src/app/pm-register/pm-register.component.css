@@ -1,0 +1,15 @@
+.reg-container{
+    height: 100%;
+    background-color: #e0e0e0;
+    border-top: 2px solid #d3d3d3;
+    color:#888888;
+    
+}
+.reg-title{
+   text-align: center;
+   margin: 30px;
+    font-weight: bolder;
+    font-size: 20px;
+    border-bottom: 1px solid white;
+    color: #667785;
+}
