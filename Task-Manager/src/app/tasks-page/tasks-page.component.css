@@ -2,6 +2,7 @@
     height: 100%;
     background-color: #e0e0e0;
     border-top: 2px solid #d3d3d3;
+
     
 }
 .left-lists{
@@ -12,6 +13,7 @@
 .tasks-plane{
     height: 100%;
     padding-top: 10px;
+
 }
 li.active a{
     background-color: #647182;
@@ -31,6 +33,7 @@ li a:hover{
     position: absolute;
     bottom: 0;
     width:100%;
+
 }
 .add-list li a{
     background-color: #ff9300;
@@ -65,7 +68,7 @@ li a:hover{
     width:100%;
     position: relative;
     bottom: 0;
-    margin-top: 20px;
+    margin-top: 0px;
 
 
 }
@@ -88,4 +91,5 @@ li a:hover{
 .task-container{
     padding-left: 20px;
     padding-right: 20px;
+    padding-bottom: 10px;
 }
