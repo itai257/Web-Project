@@ -1,0 +1,6 @@
+BootStrap Template:
+https://bootswatch.com/3/lumen/
+Forms:
+https://codepen.io/ace-subido/pen/Cuiep
+https://bootsnipp.com/snippets/featured/register-page
+https://bootsnipp.com/snippets/featured/responsive-login-with-social-buttons
