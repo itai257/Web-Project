@@ -7,6 +7,7 @@
     font-size: 20px;
     font-weight: bold;
     margin-top: 5px;
+    white-space: nowrap;
 }
 .user-tile{
     color: #9c9c9c;
@@ -19,6 +20,7 @@
 }
 .dropdown a{
     color: #9c9c9c;
+    white-space: nowrap;
 }
 .dropdown-menu{
    

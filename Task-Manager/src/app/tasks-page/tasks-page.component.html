@@ -45,9 +45,47 @@
                                                             <div class="panel-body">
                                                                 <div class="task-container">content</div> 
                                                                 <button class="input-group form-control btn btn-default" data-toggle="collapse"  data-target="#open-tasks-in">+ Add New Task...</button>
+                                                                <form class="form-horizontal">
                                                                 <div id="open-tasks-in" class="collapse">
-                                                                    <input type="text" class="form-control" placeholder="+  Add New Task...">
+                                                                    <input type="text" class="form-control task-title" placeholder="task title...." required="">
+
+                                                                    <div class="row">
+                                                                        <div class="col-xs-4">
+                                                                <div class="date-label">from:</div>    
                                                                 </div>
+                                                                    <div class="col-xs-8">
+                                                                                <div class="input-group date" data-provide="datepicker">
+                                                                                        
+                                                                                    <input type="text" class="form-control date-input">
+                                                                                    <div class="input-group-addon">
+                                                                                        <span class="glyphicon glyphicon-th"></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row" >
+                                                                        <div class="col-xs-4">
+                                                                <div class="date-label">to:</div>    
+                                                                </div>
+                                                                    <div class="col-xs-8">
+                                                                                <div class="input-group date" data-provide="datepicker">
+                                                                                        
+                                                                                    <input type="text" class="form-control date-input">
+                                                                                    <div class="input-group-addon">
+                                                                                        <span class="glyphicon glyphicon-th"></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                   <div class="col-xs-12"> 
+                                                                       
+                                                                            <button class="input-group form-control btn task-button">Submit</button>
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                            </form>
                                                             </div>
                                                           </div>
                                             </div>

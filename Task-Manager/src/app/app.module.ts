@@ -20,8 +20,6 @@ import { PmLoginComponent } from './pm-login/pm-login.component';
   ],
   imports: [
     BrowserModule
-
-
   ],
   providers: [],
   bootstrap: [AppComponent]
