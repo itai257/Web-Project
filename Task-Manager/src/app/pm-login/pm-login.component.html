@@ -5,34 +5,35 @@
            <div class="col-md-6 col-xs-12">
                                 <div class="container-fluid" style="height:100%">
                                 <!--start login paragraph -->
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" #form="ngForm" novalidate>
                                     <fieldset>
                                      <div class="login-title">Login</div>
 
 
-                                      <div class="form-group">
+                                      <div class="form-group" [class.has-error]="emailNgm.dirty && emailNgm.invalid">
                                         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                                         <div class="col-lg-10">
                                           <div class="input-group">
                                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                            <input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"  required="" />
+                                            <input type="text" class="form-control" name="email"  pattern="\w+@\w+\.\w+" placeholder="Enter your Email" required [(ngModel)]="email" #emailNgm='ngModel'  pTooltip="Enter your email" tooltipPosition="right" tooltipEvent="focus">
                                           </div>
+                                          <div *ngIf="emailNgm.dirty && emailNgm.invalid" class="danger">* Required field email with format: user@web.com</div>
                                         </div>
                                       </div>
-                                      <div class="form-group">
+                                      <div class="form-group" [class.has-error]="passwordNgm.dirty && passwordNgm.invalid">
                                           <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                                           <div class="col-lg-10">
                                               <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                            <input type="password" class="form-control" id="inputPassword" placeholder="Password" required="">
-                                            
+                                            <input type="password" class="form-control" placeholder="Password" name="password" required [(ngModel)]="password" #passwordNgm='ngModel'  pTooltip="Enter your password" tooltipPosition="right" tooltipEvent="focus">
                                               </div>
+                                              <div *ngIf="passwordNgm.dirty && passwordNgm.invalid" class="danger">* Required field password </div>
                                           </div>
                                         </div>
                                       <div class="form-group">
                                         <div class="col-lg-10 col-lg-offset-2">
                                           <button type="reset" class="btn btn-default">Cancel</button>
-                                          <button type="submit" class="btn btn-primary">Submit</button>
+                                          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
                                         </div>
                                       </div>
                                     </fieldset>

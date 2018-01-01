@@ -25,3 +25,12 @@
     margin: 20px;
     color:#888888;
 }
+.danger{
+    color: rgb(158, 19, 19);
+   
+}
+
+
+::ng-deep .ui-tooltip-text{
+    
+}

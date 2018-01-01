@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pm-login.component.css']
 })
 export class PmLoginComponent implements OnInit {
-
+  email: string;
+  password: string;
   constructor() { }
 
   ngOnInit() {
