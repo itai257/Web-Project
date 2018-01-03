@@ -9,7 +9,10 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { PmCalendarComponent } from './pm-calendar/pm-calendar.component';
 import { PmRegisterComponent } from './pm-register/pm-register.component';
 import { PmLoginComponent } from './pm-login/pm-login.component';
-import {TooltipModule} from 'primeng/primeng';
+import {TooltipModule, CheckboxModule} from 'primeng/primeng';
+
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { TruncateModule } from 'ng2-truncate';
 
 
 @NgModule({
@@ -20,12 +23,16 @@ import {TooltipModule} from 'primeng/primeng';
     PmCalendarComponent,
     PmRegisterComponent,
     PmLoginComponent,
+    ForgotPasswordComponent,
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AccordionModule,
-    TooltipModule
+    TooltipModule,
+    CheckboxModule,
+    TruncateModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]
