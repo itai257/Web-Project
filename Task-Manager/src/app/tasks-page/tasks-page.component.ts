@@ -9,29 +9,11 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
   styleUrls: ['./tasks-page.component.css']
 })
 export class TasksPageComponent implements OnInit {
-  selectedOpenTasksValues: string[];
-  sampleText: string = 'conaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaatent';
-  isClicked: boolean = false;
-  newListName: String;
+  openTitleColor: string = '#77a8d1';
   constructor() { }
 
   ngOnInit() {
 
   }
 
-  selectedTasksEvent(s,v,e) {
-    console.log(s);
-    console.log(v);
-    console.log(e);
-
-  }
-  switchClicked(){
-    this.isClicked = !this.isClicked;
-    console.log('asd');
-  }
-
-
-  addList(form: NgForm){
-    console.log(this.newListName);
-  }
 }

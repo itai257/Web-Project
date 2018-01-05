@@ -45,25 +45,6 @@ li a:hover{
     background-color: #d67e06;
 }
 
-.panel{
-    border:0px;
-}
-
-.panel-open{
-    background-color: #77a8d1;
-    color:#FFFFFF;
-}
-
-.panel-doing{
-    background-color: #acd177; 
-    color:#FFFFFF;
-}
-
-.panel-done{
-    background-color: #647182; 
-    color:#FFFFFF;
-}
-
 .input-group{
     width:100%;
     position: relative;
@@ -83,56 +64,28 @@ li a:hover{
     border: 0px;
 
 }
-.panel-body{
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom:0px;
-}
-.task-container{
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-}
+
 
 .date-input{
     background-color: rgb(247, 247, 247);
     border: 1px solid rgb(199, 199, 199);
 }
-.task-title{
-    background-color: #ffffff;
-    border-bottom: 1px solid  #c2c2c2;
-    border-top: 2px solid  #c2c2c2;
-}
-.input-group.date{
-    padding: 3px;
-}
-.date-label{
-    padding-left: 10px;
-    padding-top: 10px;
-}
-#open-tasks-in{
-    background-color: #ebebeb;
-}
-.task-button{
-    background-color: #b1b1b1;
-    color: #FFFFFF;
-}
-
-.task-row {
-    border-bottom: 1px solid rgb(212, 212, 212);
-    padding-top: 22px;
-    padding-bottom: 5px;
-    padding-left: 0px;
-    padding-right: 0px;
-    
-}
 
 
 
-.chekcbox-label{
-    overflow-wrap: break-word;
-    font-weight: bolder;
-
+/*
+.panel-open{
+    background-color: #77a8d1;
+    color:#FFFFFF;
 }
 
+.panel-doing{
+    background-color: #acd177; 
+    color:#FFFFFF;
+}
 
+.panel-done{
+    background-color: #647182; 
+    color:#FFFFFF;
+}
+*/

@@ -13,6 +13,7 @@ import {TooltipModule, CheckboxModule} from 'primeng/primeng';
 
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { TruncateModule } from 'ng2-truncate';
+import { TasksBoxComponent } from './tasks-box/tasks-box.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { TruncateModule } from 'ng2-truncate';
     PmRegisterComponent,
     PmLoginComponent,
     ForgotPasswordComponent,
+    TasksBoxComponent,
 
   ],
   imports: [
