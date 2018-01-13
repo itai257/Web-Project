@@ -59,7 +59,7 @@
     padding-left: 10px;
     padding-top: 10px;
 }
-#open-tasks-in{
+.collapse-task{
     background-color: #ebebeb;
 }
 .task-button{
@@ -79,7 +79,7 @@
 
 
 .chekcbox-label{
-    overflow-wrap: break-word;
+    word-wrap: break-word;
     font-weight: bolder;
 
 }

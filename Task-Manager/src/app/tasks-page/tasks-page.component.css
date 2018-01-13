@@ -13,7 +13,7 @@
 .tasks-plane{
     height: 100%;
     padding-top: 10px;
-
+    overflow-y: scroll;
 }
 li.active a{
     background-color: #647182;
@@ -71,21 +71,3 @@ li a:hover{
     border: 1px solid rgb(199, 199, 199);
 }
 
-
-
-/*
-.panel-open{
-    background-color: #77a8d1;
-    color:#FFFFFF;
-}
-
-.panel-doing{
-    background-color: #acd177; 
-    color:#FFFFFF;
-}
-
-.panel-done{
-    background-color: #647182; 
-    color:#FFFFFF;
-}
-*/

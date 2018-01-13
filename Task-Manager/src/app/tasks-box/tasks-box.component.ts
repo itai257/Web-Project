@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Input} from '@angular/core';
 import { FormBuilder } from '@angular/forms/src/form_builder';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-tasks-box',
@@ -9,19 +10,17 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 })
 export class TasksBoxComponent implements OnInit {
   selectedOpenTasksValues: string[];
-  sampleText: string = 'conaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaatent';
-  isClicked: boolean = false;
+
   newListName: String;
   @Input() titleColor: string;
+  @Input() boxTitle: string;
+  @Input() boxId: string;
+  @Input() tasks: Task[]= [];
   constructor() { }
 
   ngOnInit() {
   }
 
-  switchClicked() {
-    this.isClicked = !this.isClicked;
-    console.log('asd');
-  }
 
 
   addList(form: NgForm) {

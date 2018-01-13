@@ -1,13 +1,12 @@
 export class Task {
-    public taskTitle: string;
-    public startDate: Date;
-    public endDate: Date;
-    public isTruncate: boolean;
+    public id;
+    public title: string;
+    public start_date: Date;
+    public end_date: Date;
+    public list_id: any;
+    public isTruncate = false;
+    public status: string;
 
-    constructor(taskName, taskStartDate, taskEndDate) {
-        this.taskTitle = taskName;
-        this.startDate = taskStartDate;
-        this.endDate = taskEndDate;
-        this.isTruncate = false;
+    constructor() {
     }
 }

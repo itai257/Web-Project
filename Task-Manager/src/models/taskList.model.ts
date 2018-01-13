@@ -2,10 +2,10 @@ import { Task } from './task.model';
 
 
 export class TaskList {
-    public listName: string;
-    public tasks: Task[];
+    public title;
+    public id;
+    public user_id;
 
-    constructor(listName) {
-        this.listName = listName;
+    constructor() {
     }
 }

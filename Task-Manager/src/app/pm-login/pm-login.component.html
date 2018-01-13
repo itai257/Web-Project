@@ -5,7 +5,7 @@
            <div class="col-md-6 col-xs-12">
                                 <div class="container-fluid" style="height:100%">
                                 <!--start login paragraph -->
-                                <form class="form-horizontal" #form="ngForm" novalidate>
+                                <form class="form-horizontal" #form="ngForm" (ngSubmit)="form.valid && login()" novalidate>
                                     <fieldset>
                                      <div class="login-title">Login</div>
 
@@ -33,15 +33,19 @@
                                       <div class="form-group">
                                         <div class="col-lg-10 col-lg-offset-2">
                                           <button type="reset" class="btn btn-default">Cancel</button>
-                                          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+                                          <button type="submit" class="btn btn-primary" [disabled]="form.invalid || loading">Submit</button>
                                         </div>
+
                                       </div>
+                                      <div class="alert alert-danger" *ngIf="err">
+                                          <strong>{{err}}</strong>
+                                        </div>
                                     </fieldset>
                                   </form>
                                   <!-- end login paragraph -->
                                 </div>
-                                <div style="text-align: center;border-bottom: 1px solid white;margin-bottom: 10px;"> <a href="#">Forgot your password?</a></div>
-                                <div style="text-align: center;">Don't have a user? <a href="#">Register here</a></div>
+                                <div style="text-align: center;border-bottom: 1px solid white;margin-bottom: 10px;"> <a [routerLink]="['/forgotpassword']">Forgot your password?</a></div>
+                                <div style="text-align: center;">Don't have a user? <a [routerLink]="['/register']">Register here</a></div>
           </div>
           <div class="col-md-3 col-xs-0"></div>
 </div>

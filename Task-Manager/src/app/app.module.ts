@@ -1,3 +1,5 @@
+import { ListService } from './services/list.service';
+import { GatewayConfig } from './app.config';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -10,10 +12,16 @@ import { PmCalendarComponent } from './pm-calendar/pm-calendar.component';
 import { PmRegisterComponent } from './pm-register/pm-register.component';
 import { PmLoginComponent } from './pm-login/pm-login.component';
 import {TooltipModule, CheckboxModule} from 'primeng/primeng';
-
+import { RouterModule } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { TruncateModule } from 'ng2-truncate';
 import { TasksBoxComponent } from './tasks-box/tasks-box.component';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthGuard } from "./guards/auth.guard";
+import {HttpModule} from "@angular/http";
+import { TasksService } from './services/tasks.service';
+import { UserService } from './services/user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -25,18 +33,27 @@ import { TasksBoxComponent } from './tasks-box/tasks-box.component';
     PmRegisterComponent,
     PmLoginComponent,
     ForgotPasswordComponent,
-    TasksBoxComponent,
-
+    TasksBoxComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     AccordionModule,
     TooltipModule,
     CheckboxModule,
-    TruncateModule
+    TruncateModule,
+    HttpModule,
+
+        RouterModule.forRoot([
+          { path: '', component: TasksPageComponent, canActivate: [AuthGuard]},
+          { path: 'login', component: PmLoginComponent },
+          { path: 'register', component: PmRegisterComponent },
+          { path: 'forgotpassword', component: ForgotPasswordComponent },
+          { path: '**', redirectTo: '' }
+    ])
   ],
-  providers: [],
+  providers: [ GatewayConfig, AuthenticationService, AuthGuard,  ListService, TasksService, UserService],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

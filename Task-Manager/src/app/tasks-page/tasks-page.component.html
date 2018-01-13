@@ -7,9 +7,8 @@
           
                   <div class="col-md-2 col-xs-12 left-lists">
 
-                      <ul class="nav nav-pills nav-stacked">
-                          <li class="active"><a href="#">List 1</a></li>
-                          <li><a href="#">List 2</a></li>
+                      <ul class="nav nav-pills nav-stacked" *ngFor="let list of Lists">
+                            <li [class]="list.id == selectedList? 'active' : ''"><a style="cursor: pointer" (click)="replaceList(list.id)">{{list.title}}</a></li>
                       </ul>
 
                       <ul class="nav nav-pills nav-stacked add-list">
@@ -40,38 +39,13 @@
                   <div class="col-md-10 col-xs-12 tasks-plane">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                    <app-tasks-box [titleColor]='openTitleColor'></app-tasks-box>
+                                                    <app-tasks-box titleColor="{{'#77a8d1'}}" boxTitle="{{'Open Tasks'}}" [boxId]="'OpenTasks'" [tasks]="currentTasks_open"></app-tasks-box>
                                             </div>
                                             <div class="col-md-4">
-                                                    <div class="panel">
-                                                            <div class="panel-heading panel-doing">
-                                                              <h3 class="panel-title">Doing Tasks</h3>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                <div class="task-container">content</div> 
-                                                                <button class="input-group form-control btn btn-default" data-toggle="collapse"  data-target="#doing-tasks-in">+ Add New Task...</button>
-                                                                <div id="doing-tasks-in" class="collapse">
-                                                                    <input type="text" class="form-control" placeholder="+  Add New Task...">
-                                                                </div>
-                                                            </div>
-                                                          </div>
+                                                    <app-tasks-box  titleColor="{{'#acd177'}}" boxTitle="{{'Doing Tasks'}}" [boxId]="'DoingTasks'" [tasks]="currentTasks_doing"></app-tasks-box>
                                             </div>
                                             <div class="col-md-4">
-                                                    <div class="panel ">
-                                                            <div class="panel-heading panel-done">
-                                                              <h3 class="panel-title ">Done Tasks</h3>
-                                                            </div>
-                                                            <div class="panel-body">
-                                                                    <div class="task-container">content</div> 
-                                                                    <button class="input-group form-control btn btn-default" data-toggle="collapse"  data-target="#done-tasks-in">+ Add New Task...</button>
-                                                                    <div id="done-tasks-in" class="collapse">
-                                                                        <input type="text" class="form-control" placeholder="+  Add New Task...">
-                                                                    </div>
-
-
-
-                                                            </div>
-                                                     </div>
+                                                    <app-tasks-box  titleColor="{{'#647182'}}" boxTitle="{{'Done Tasks'}}" [boxId]="'DoneTasks'" [tasks]="currentTasks_done"></app-tasks-box>
                                             </div>
                                         </div>
 

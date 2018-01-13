@@ -5,7 +5,7 @@
            <div class="col-md-6 col-xs-12">
                                 <div class="container-fluid" style="height:100%">
                                 <!--start login paragraph -->
-                                <form  class="form-horizontal" #form="ngForm" novalidate>
+                                <form  class="form-horizontal" #form="ngForm" (ngSubmit)="form.valid && register()" novalidate>
                                     <fieldset>
                                      <div class="reg-title">Registeration</div>
                                      
@@ -36,13 +36,13 @@
                                         <div class="col-lg-10">
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="gender" id="male" value="male" checked="checked" >
+                                              <input type="radio" name="gender" id="male" value="male" ng-control="male" [(ngModel)]="gender">
                                               male
                                             </label>
                                           </div>
                                           <div class="radio">
                                             <label>
-                                              <input type="radio" name="gender" id="female" value="female" >
+                                              <input type="radio" name="gender" id="female" value="female" ng-control="female" [(ngModel)]="gender">
                                               female
                                             </label>
                                           </div>
@@ -67,14 +67,17 @@
                                       <div class="form-group">
                                         <div class="col-lg-10 col-lg-offset-2">
                                           <button type="reset" class="btn btn-default">Cancel</button>
-                                          <button type="submit" [disabled]="form.invalid || vpassword!=password" class="btn btn-primary" >Submit</button>
+                                          <button type="submit" [disabled]="form.invalid || vpassword!=password || loading" class="btn btn-primary" >Submit</button>
                                         </div>
                                       </div>
+                                      <div class="alert alert-danger" *ngIf="err">
+                                          <strong>{{err}}</strong>
+                                        </div>
                                     </fieldset>
                                   </form>
                                   <!-- end login paragraph -->
                                 </div>
-                                <div style="text-align: center;">Already user? <a href="#">Login here</a></div>
+                                <div style="text-align: center;">Already user? <a [routerLink]="['/login']">Login here</a></div>
           </div>
           <div class="col-md-3 col-xs-0"></div>
 </div>
