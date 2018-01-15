@@ -8,44 +8,56 @@
                   <div class="col-md-2 col-xs-12 left-lists">
 
                       <ul class="nav nav-pills nav-stacked" *ngFor="let list of Lists">
-                            <li [class]="list.id == selectedList? 'active' : ''"><a style="cursor: pointer" (click)="replaceList(list.id)">{{list.title}}</a></li>
+
+                              
+                            <li [class]="list.id == selectedList? 'active' : ''" style="width:100%">
+                                
+                                    
+                                <a style="cursor: pointer" (click)="replaceList(list.id)">
+                                    {{list.title}}
+                                    <a class="delete-list glyphicon glyphicon-trash" title="Delete List" (click)="deleteList(list.id);$event.stopPropagation()"></a>
+                                </a>
+                                
+                            </li>
+                        
                       </ul>
 
                       <ul class="nav nav-pills nav-stacked add-list">
 
-                          <li>
-                                <div id="add-list-in" class="collapse">
-
-                                        
-                                        <div class="input-group mb-3">
-                                            <form #form="ngForm" (submit)='addList(form)'  novalidate>
-                                                <input type="text" class="form-control" placeholder="list name..." name="listName"  style="width:80%" required [(ngModel)]='newListName'>
-                                                <div class="input-group-append" >
-                                                  <button class="btn btn-outline-secondary" type="submit" [disabled]="form.invalid" style="width:20%" data-toggle="collapse"  data-target="#add-list-in">Add</button>
+                            <li>
+                                    <a class="input-group form-control btn btn-default" data-toggle="collapse"  data-target="#add-list-in">+ Add List</a>
+                                  <div id="add-list-in" class="collapse">
+    
+                                          
+                                          <div class="input-group mb-3">
+                                              <form #form="ngForm" (submit)='addList(form)'  novalidate>
+                                                  <input type="text" class="form-control" placeholder="list name..." name="listName"  style="width:80%" required [(ngModel)]='newListName'>
+                                                  <div class="input-group-append" >
+                                                    <button class="btn btn-outline-secondary" type="submit" [disabled]="form.invalid" style="width:20%" data-toggle="collapse"  data-target="#add-list-in">Add</button>
+                                                  </div>
+                                              </form>
                                                 </div>
-                                            </form>
-                                              </div>
-
-                                </div>
-                              <a class="input-group form-control btn btn-default" data-toggle="collapse"  data-target="#add-list-in">+ Add List</a>
-
-
-                            </li>
-                          
-                      </ul>
+    
+                                  </div>
+                                
+    
+    
+                              </li>
+                            
+                        </ul>
                   
                   </div>
 
                   <div class="col-md-10 col-xs-12 tasks-plane">
                                         <div class="row">
                                             <div class="col-md-4">
-                                                    <app-tasks-box titleColor="{{'#77a8d1'}}" boxTitle="{{'Open Tasks'}}" [boxId]="'OpenTasks'" [tasks]="currentTasks_open"></app-tasks-box>
+                                                    <app-tasks-box titleColor="{{'#77a8d1'}}" boxTitle="{{'Open Tasks'}}" [boxId]="'OpenTasks'" [tasks]="currentTasks_open" (addTaskEvent)="addNewTask($event,'open')"></app-tasks-box>
                                             </div>
                                             <div class="col-md-4">
-                                                    <app-tasks-box  titleColor="{{'#acd177'}}" boxTitle="{{'Doing Tasks'}}" [boxId]="'DoingTasks'" [tasks]="currentTasks_doing"></app-tasks-box>
+                                                    <app-tasks-box  titleColor="{{'#acd177'}}" boxTitle="{{'Doing Tasks'}}" [boxId]="'DoingTasks'" [tasks]="currentTasks_doing" (addTaskEvent)="addNewTask($event,'doing')"></app-tasks-box>
                                             </div>
                                             <div class="col-md-4">
-                                                    <app-tasks-box  titleColor="{{'#647182'}}" boxTitle="{{'Done Tasks'}}" [boxId]="'DoneTasks'" [tasks]="currentTasks_done"></app-tasks-box>
+                                                    <app-tasks-box  titleColor="{{'#647182'}}" boxTitle="{{'Done Tasks'}}" [boxId]="'DoneTasks'" [tasks]="currentTasks_done" (addTaskEvent)="addNewTask($event,'done')"></app-tasks-box>
                                             </div>
                                         </div>
 

@@ -6,10 +6,12 @@ import {GatewayConfig} from "../app.config";
 import { Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AuthenticationService {
-  user = new User();
+  public userSubject = new Subject<User>();
+  public user: User;
   public isLoggedIn = false;
   private baseUrl: string;
 
@@ -23,23 +25,24 @@ export class AuthenticationService {
       .map((response: Response) => {
         const obj = response.json();
         // tslint:disable-next-line:no-shadowed-variable
-        const email = obj.email;
         const id = obj.id;
         if (response && obj) {
-          localStorage.setItem('currentUser', JSON.stringify(email));
+          localStorage.setItem('currentUser', JSON.stringify(obj));
           localStorage.setItem('currentUserId', JSON.stringify(id));
           localStorage.setItem('isLoggedIn', 'true');
-          this.user = <User> Object.assign(true, {}, email);
+          this.user = <User> Object.assign(true, {}, obj);
+          this.userSubject.next(this.user);
           this.isLoggedIn = true;
         }
       });
   }
 
+
   validate(): boolean {
     this.isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     if (this.isLoggedIn) {
-      const user = JSON.parse(localStorage.getItem('currentUser'));
-      this.user = Object.assign(true, {}, user);
+      this.user = JSON.parse(localStorage.getItem('currentUser'));
+      this.userSubject.next(this.user);
       if (!this.user)
           return false;
     }

@@ -5,11 +5,58 @@
 
     
 }
+.container-fluid{
+    padding-right: 0px;
+}
 .left-lists{
     background-color: #f5f5f5;
     height: 100%;
     padding: 0px;
+    overflow-y: scroll;
 }
+
+/****/
+.left-lists::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.left-lists::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+.left-lists::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,.3);
+	background-color: rgb(145, 145, 145);
+}
+.tasks-plane::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.tasks-plane::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+.tasks-plane::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,.3);
+	background-color: rgb(145, 145, 145);
+}
+/****/
+
+
 .tasks-plane{
     height: 100%;
     padding-top: 10px;
@@ -30,7 +77,7 @@ li a:hover{
     border-radius: 0;
 }
 .add-list{
-    position: absolute;
+    position: relative;
     bottom: 0;
     width:100%;
 
@@ -70,4 +117,6 @@ li a:hover{
     background-color: rgb(247, 247, 247);
     border: 1px solid rgb(199, 199, 199);
 }
-
+.delete-list{
+    float:right;
+}

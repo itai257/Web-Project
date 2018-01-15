@@ -24,22 +24,25 @@
         <!-- -->
     </div> 
     <button class="input-group form-control btn btn-default" data-toggle="collapse"  [attr.data-target]="'#'+boxId">+ Add New Task...</button>
-    <form class="form-horizontal">
+    <form class="form-horizontal" #form="ngForm" (submit)='addTask(form)' novalidate>
     <div id="{{boxId}}" class="collapse collapse-task">
-        <input type="text" class="form-control task-title" placeholder="task title...." required="">
+        <input type="text" class="form-control task-title" placeholder="task title...." name="newTaskTitle"required="" [(ngModel)]="task.title">
 
         <div class="row">
             <div class="col-xs-4">
     <div class="date-label">from:</div>    
     </div>
         <div class="col-xs-8">
-                    <div class="input-group date" data-provide="datepicker">
+                    <!-- <div class="input-group date" data-provide="datepicker" >
                             
-                        <input type="text" class="form-control date-input">
+                        <input type="text" class="form-control date-input" name="startingdate"  [(ngModel)]="task.start_date">
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-th"></span>
                         </div>
-                    </div>
+                    </div> -->
+                    
+                    <p-calendar [(ngModel)]="task.start_date" name="startDate" [showIcon]="true" item-width="100%" ></p-calendar>
+                
         </div>
     </div>
     <div class="row" >
@@ -47,22 +50,19 @@
     <div class="date-label">to:</div>    
     </div>
         <div class="col-xs-8">
-                    <div class="input-group date" data-provide="datepicker">
-                            
-                        <input type="text" class="form-control date-input">
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
-                        </div>
-                    </div>
+                <p-calendar [(ngModel)]="task.end_date" name="endDate" [showIcon]="true"></p-calendar>
         </div>
     </div>
     <div class="row">
        <div class="col-xs-12"> 
            
-                <button class="input-group form-control btn task-button">Submit</button>
+                <button class="input-group form-control btn task-button" [disabled]="form.invalid">Submit</button>
            
         </div>
     </div>
+    <div class="alert alert-danger" style="margin:0px" *ngIf="err">
+            <strong>{{err}}</strong>
+          </div>
     </div>
 </form>
 </div>

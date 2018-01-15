@@ -22,7 +22,8 @@ import {HttpModule} from "@angular/http";
 import { TasksService } from './services/tasks.service';
 import { UserService } from './services/user.service';
 import {HttpClientModule} from '@angular/common/http';
-
+import {CalendarModule} from 'primeng/primeng';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {HttpClientModule} from '@angular/common/http';
     CheckboxModule,
     TruncateModule,
     HttpModule,
-
+    CalendarModule,
+    BrowserAnimationsModule,
         RouterModule.forRoot([
           { path: '', component: TasksPageComponent, canActivate: [AuthGuard]},
           { path: 'login', component: PmLoginComponent },

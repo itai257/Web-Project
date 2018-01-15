@@ -21,5 +21,16 @@ export class TasksService {
     return this.http.get<Task[]>(this.baseUrl + '/api/List_tasks/' + ListId);
    }
 
+   addNewTask(task: Task) {
+    return this.http.post(this.baseUrl + '/api/List_tasks/', {
+      title: task.title,
+      start_date: task.start_date,
+      end_date: task.end_date,
+      list_id: task.list_id,
+      status: task.status
+    }).map((response: Response) =>
+        <Task>response.json()
+      );
+   }
 
 }

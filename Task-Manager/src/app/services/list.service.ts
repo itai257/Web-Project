@@ -13,7 +13,6 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class ListService {
-  //listUpdated: EventEmitter = new EventEmitter();
   private baseUrl: string;
   list: TaskList[] = [];
   test;
@@ -33,12 +32,10 @@ export class ListService {
       user_id: list.user_id
     }).map((response: Response) =>
         <TaskList>response.json()
-        // tslint:disable-next-line:no-shadowed-variable
-
-
       );
 
-
   }
+
+
 }
 

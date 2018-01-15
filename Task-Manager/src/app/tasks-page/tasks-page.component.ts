@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { TaskList } from './../../models/taskList.model';
 import { Http } from '@angular/http';
 import { ListService } from './../services/list.service';
@@ -24,7 +25,7 @@ export class TasksPageComponent implements OnInit {
  selectedList;
  newListName;
  err = "";
-  constructor(private listService: ListService, private tasksService: TasksService) { }
+  constructor(private listService: ListService, private tasksService: TasksService, private router: Router) { }
 
   ngOnInit() {
     this.listService.getAllLists(localStorage.getItem('currentUserId'))
@@ -43,7 +44,10 @@ export class TasksPageComponent implements OnInit {
 
   }
 
-
+deleteList(listid) {
+  console.log(listid);
+  
+}
   assignTasks(tasks: Task[]) {
       for (const task of tasks){
           if (task.status === "open") {
@@ -88,8 +92,24 @@ export class TasksPageComponent implements OnInit {
 
   }
 
-  
   ngOnChange(){
     console.log(this.Lists);
+  }
+
+  addNewTask(el: Task, stat: string) {
+    console.log("task-page.component got the new task: ");
+    console.log(el);
+    el.list_id = this.selectedList;
+    el.status = stat;
+    //need to send to server
+    this.tasksService.addNewTask(el).subscribe(
+      data => {
+            // console.log(data);
+            // this.Lists.push(data);
+      },
+      error => {
+        this.err = error._body;
+        //this.loading = false;
+      });
   }
 }
