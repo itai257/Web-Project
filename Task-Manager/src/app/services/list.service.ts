@@ -8,6 +8,9 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import { $ } from 'protractor';
 import { HttpClient } from '@angular/common/http';
+import { RequestOptions } from '@angular/http';
+import { Headers } from '@angular/http';
+
 
 
 
@@ -35,7 +38,16 @@ export class ListService {
       );
 
   }
+  deleteList(listId) {
+    console.log("asd");
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Access-Control-Allow-Origin', '*');
+    const options = new RequestOptions({ headers: headers });
+    options.headers = headers;
+    return this.http.delete(this.baseUrl + '/api/list/' + listId, options).map((response: Response) => {
 
+});
+}
 
 }
 

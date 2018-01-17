@@ -1,3 +1,4 @@
+import { PmUserDetailsComponent } from './pm-userDetails/pm-userDetails.component';
 import { ListService } from './services/list.service';
 import { GatewayConfig } from './app.config';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +28,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PmRegisterComponent,
     PmLoginComponent,
     ForgotPasswordComponent,
-    TasksBoxComponent
+    TasksBoxComponent,
+    PmUserDetailsComponent
   ],
   imports: [
     HttpClientModule,
@@ -51,6 +55,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
         RouterModule.forRoot([
           { path: '', component: TasksPageComponent, canActivate: [AuthGuard]},
+          { path: 'userdetails', component: PmUserDetailsComponent, canActivate: [AuthGuard]},
           { path: 'login', component: PmLoginComponent },
           { path: 'register', component: PmRegisterComponent },
           { path: 'forgotpassword', component: ForgotPasswordComponent },

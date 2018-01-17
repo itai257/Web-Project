@@ -4,8 +4,8 @@
   <div class="row top-tile">
     <div class="container-fluid">
 
-            <div class="col-md-2 col-xs-12 blue-title">
-              <img src="../assets/logo.jpg">
+            <div class="col-md-2 col-xs-12 blue-title" style="cursor: pointer" [routerLink]="['/']">
+              <img src="../assets/logo.jpg" >
               {{title}}
             </div>
 
@@ -40,7 +40,7 @@
                     <ul class="dropdown-menu" role="menu">
                       <li style="text-align:center">{{currentUser.lastname + ' ' + currentUser.firstname}}</li>
                       <li class="divider"></li>
-                      <li><a>Manage your detailes</a></li>
+                      <li><a [routerLink]="['/userdetails']">Manage your detailes</a></li>
                       <li class="divider"></li>
                       <li><a [routerLink]="['/login']">Log Out</a></ul>
                     </ul>

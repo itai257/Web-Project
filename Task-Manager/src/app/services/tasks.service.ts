@@ -36,7 +36,9 @@ export class TasksService {
       );
    }
    deleteTask(task: Task) {
+                 return this.http.delete(this.baseUrl + '/api/List_tasks/' + task.id).map((response: Response) => {
 
+    });
    }
 
    moveTask(task: Task) {
@@ -47,8 +49,9 @@ export class TasksService {
       end_date: task.end_date,
       list_id: task.list_id,
       status: task.status
-    }).map((response: Response) =>
-        <Task>response.json()
-      );
+    }).map((response: Response) => {
+
+    });
   }
+
 }

@@ -1,0 +1,80 @@
+<div class="row userdetails-container" >
+    <div class="col-md-3 col-xs-0"></div>
+          
+            
+           <div class="col-md-6 col-xs-12">
+                                <div class="container-fluid" style="height:100%">
+                                
+                                <form class="form-horizontal" #form="ngForm" (ngSubmit)="form.valid && login()" novalidate>
+                                    <fieldset>
+                                     <div class="userdetails-title">Details</div>
+
+
+                                      <div class="form-group" >
+                                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                                        <div class="col-lg-10">
+                                          <div class="input-group" style="width: 100%">
+                                            <input type="text" class="form-control" name="email"  disabled="disabled" [value]="email" >
+                                          </div>
+                                          
+                                        </div>
+                                      </div>
+
+                                      <div class="form-group" [class.has-error]="firstNameNgm.dirty && firstNameNgm.invalid">
+                                        <label for="inputPassword" class="col-lg-2 control-label">first name:</label>
+                                        <div class="col-lg-10">
+                                            <div class="input-group" style="width: 100%">
+                                          <input type="password" class="form-control" name="password" required [(ngModel)]="firstName" #firstNameNgm='ngModel'  pTooltip="Enter your first name" tooltipPosition="right" tooltipEvent="focus">
+                                            </div>
+                                            <div *ngIf="firstNameNgm.dirty && firstNameNgm.invalid" class="danger">* Required field password </div>
+                                        </div>
+                                      </div>
+
+
+                                      <div class="form-group" [class.has-error]="lastNameNgm.dirty && lastNameNgm.invalid">
+                                        <label for="inputPassword" class="col-lg-2 control-label">last name:</label>
+                                        <div class="col-lg-10">
+                                            <div class="input-group" style="width: 100%">
+                                          <input type="password" class="form-control" name="lastName" required [(ngModel)]="lastName" #lastNameNgm='ngModel'  pTooltip="Enter your last name" tooltipPosition="right" tooltipEvent="focus">
+                                            </div>
+                                            <div *ngIf="lastNameNgm.dirty && lastNameNgm.invalid" class="danger">* Required field password </div>
+                                        </div>
+                                      </div>
+
+                                      
+                                      <div class="form-group" [class.has-error]="passwordNgm.dirty && passwordNgm.invalid">
+                                          <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                                          <div class="col-lg-10">
+                                              <div class="input-group" style="width: 100%">
+                                            <input type="password" class="form-control" placeholder="Password" name="password" required [(ngModel)]="password" #passwordNgm='ngModel'  pTooltip="Enter your password" tooltipPosition="right" tooltipEvent="focus">
+                                              </div>
+                                              <div *ngIf="passwordNgm.dirty && passwordNgm.invalid" class="danger">* Required field password </div>
+                                          </div>
+                                        </div>
+                                        <div class="form-group" [class.has-error]="vpasswordNgm.dirty && vpasswordNgm.invalid">
+                                          <label for="vpassword" class="col-lg-2 control-label">Veify Password</label>
+                                          <div class="col-lg-10">
+                                            <input type="password" class="form-control" name="vpassword" placeholder="Veify Password" required [(ngModel)]="vpassword" #vpasswordNgm='ngModel' pTooltip='Verify your password' tooltipPosition='right' tooltipEvent='focus'>
+                                            <div *ngIf="vpasswordNgm.dirty && vpasswordNgm.invalid" class="danger">* Required field Verify password </div>
+                                             <div *ngIf="vpassword!=password && vpasswordNgm.dirty" class="danger">* Passwords does not match</div>
+                                          </div>
+                                        </div>
+                                      <div class="form-group">
+                                        <div class="col-lg-10 col-lg-offset-2">
+                                          <button type="reset" class="btn btn-default">Cancel</button>
+                                          <button type="submit" class="btn btn-primary" [disabled]="form.invalid || loading">Update</button>
+                                        </div>
+
+                                      </div>
+                                      <div class="alert alert-danger" *ngIf="err">
+                                          <strong>{{err}}</strong>
+                                        </div>
+                                    </fieldset>
+                                  </form>
+                                 
+                                </div>
+                                <div style="text-align: center;border-bottom: 1px solid white;margin-bottom: 10px;"> </div>
+                                <div style="text-align: center;"><a [routerLink]="['/']">Back to main page</a></div>
+          </div>
+          <div class="col-md-3 col-xs-0"></div>
+</div>

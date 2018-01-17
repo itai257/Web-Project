@@ -77,7 +77,14 @@ export class TasksPageComponent implements OnInit {
         task.title.toLocaleLowerCase().indexOf(filter) !== -1);
   }
 deleteList(listid) {
-  console.log(listid);
+
+this.listService.deleteList(listid)
+  .subscribe(data => {
+        this.ngOnInit();
+}
+ , error => this.errorMessage = <any> error);
+
+
 }
   assignTasks(tasks: Task[]) {
     this.sortByfilter = "none";
@@ -150,6 +157,12 @@ deleteList(listid) {
 
   deleteTask(el: Task){
       console.log(el);
+      this.tasksService.deleteTask(el).subscribe(      data => {
+        this.replaceList(this.selectedList);
+  },
+  error => {
+    this.err = error._body;
+  });
   }
 
   moveTask(el: Task){
