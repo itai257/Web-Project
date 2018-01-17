@@ -33,17 +33,16 @@
             <div class="user-tile col-md-2 col-xs-6"  align="right" *ngIf="!hideTopBar">
                 <ul class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                      {{currentUser.lastname}}&nbsp;
-                      <!-- <input [(ngModel)]="authenticationService.user.firstName" name="nameLabel"> -->
+                      {{currentUser.firstname}}
                       <img src="../assets/user-icon-anon.png">
                     </a>
                     
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Action</a></li>
+                      <li style="text-align:center">{{currentUser.lastname + ' ' + currentUser.firstname}}</li>
                       <li class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
+                      <li><a>Manage your detailes</a></li>
                       <li class="divider"></li>
-                      <li><a href="#">One more separated link</a></ul>
+                      <li><a [routerLink]="['/login']">Log Out</a></ul>
                     </ul>
             
             </div>

@@ -13,16 +13,19 @@ export class TasksService {
 
   private baseUrl: string;
 
-  constructor(private http: HttpClient, private gatewayConfig: GatewayConfig) {
+  constructor(private http: Http, private gatewayConfig: GatewayConfig, private httpClient: HttpClient) {
     this.baseUrl = `http://${gatewayConfig.ip}:${gatewayConfig.port}`;
   }
   getAllTasks(ListId): Observable<Task[]> {
     //
-    return this.http.get<Task[]>(this.baseUrl + '/api/List_tasks/' + ListId);
+    // Task[] t = this.http.get<Task[]>(this.baseUrl + '/api/List_tasks/' + ListId);
+
+    return this.httpClient.get<Task[]>(this.baseUrl + '/api/List_tasks/' + ListId);
    }
 
    addNewTask(task: Task) {
     return this.http.post(this.baseUrl + '/api/List_tasks/', {
+      id: task.id,
       title: task.title,
       start_date: task.start_date,
       end_date: task.end_date,
@@ -32,5 +35,20 @@ export class TasksService {
         <Task>response.json()
       );
    }
+   deleteTask(task: Task) {
 
+   }
+
+   moveTask(task: Task) {
+         return this.http.put(this.baseUrl + '/api/List_tasks/', {
+           id: task.id,
+      title: task.title,
+      start_date: task.start_date,
+      end_date: task.end_date,
+      list_id: task.list_id,
+      status: task.status
+    }).map((response: Response) =>
+        <Task>response.json()
+      );
+  }
 }

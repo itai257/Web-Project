@@ -25,8 +25,33 @@ export class TasksPageComponent implements OnInit {
  selectedList;
  newListName;
  err = "";
+ _tasksFilter: string;
+ filteredTasks: Task[];
+ allTasks: Task[];
+ sortByfilter = "none";
   constructor(private listService: ListService, private tasksService: TasksService, private router: Router) { }
 
+
+  sortTasks(filter: string) {
+    this.sortByfilter = filter;
+    if (filter === "task name") {
+          this.currentTasks_open = this.currentTasks_open.sort(( a, b) => (a.title > b.title ? 1 : -1));
+    }
+    if (filter === "start date") {
+      this.currentTasks_open = this.currentTasks_open.sort(( a, b) => (a.start_date > b.start_date ? 1 : -1));
+      }
+    if (filter === "end date") {
+        this.currentTasks_open = this.currentTasks_open.sort(( a, b) => (a.end_date > b.end_date ? 1 : -1));
+        }
+  }
+  get tasksFilter(): string{
+    return this._tasksFilter;
+  }
+  set tasksFilter(value: string){
+    this._tasksFilter = value;
+    this.filteredTasks = this._tasksFilter ? this.performFilter(this._tasksFilter) : this.allTasks;
+    this.assignTasks(this.filteredTasks);
+  }
   ngOnInit() {
     this.listService.getAllLists(localStorage.getItem('currentUserId'))
     .subscribe(list => {
@@ -35,6 +60,9 @@ export class TasksPageComponent implements OnInit {
         this.selectedList = this.Lists[0].id;
             this.tasksService.getAllTasks(this.Lists[0].id).subscribe(
               task => {
+                this.filteredTasks = task;
+                this.allTasks = task;
+                this._tasksFilter = "";
                 this.assignTasks(task);
               }
             );
@@ -43,12 +71,22 @@ export class TasksPageComponent implements OnInit {
     error => this.errorMessage = <any> error);
 
   }
-
+  performFilter(filter: string): Task[] {
+    filter = filter.toLocaleLowerCase();
+    return this.allTasks.filter((task: Task) =>
+        task.title.toLocaleLowerCase().indexOf(filter) !== -1);
+  }
 deleteList(listid) {
   console.log(listid);
-  
 }
   assignTasks(tasks: Task[]) {
+    this.sortByfilter = "none";
+      while (this.currentTasks_doing.length > 0)
+      this.currentTasks_doing.pop();
+  while (this.currentTasks_open.length > 0)
+      this.currentTasks_open.pop();
+  while (this.currentTasks_done.length > 0)
+      this.currentTasks_done.pop();
       for (const task of tasks){
           if (task.status === "open") {
             this.currentTasks_open.push(task);
@@ -70,6 +108,9 @@ deleteList(listid) {
           this.currentTasks_done.pop();
     this.tasksService.getAllTasks(listId).subscribe(
       task => {
+        this.filteredTasks = task;
+        this.allTasks = task;
+        this._tasksFilter = "";
         this.assignTasks(task);
       }
     );
@@ -87,29 +128,37 @@ deleteList(listid) {
       },
       error => {
         this.err = error._body;
-        //this.loading = false;
       });
 
   }
 
-  ngOnChange(){
+  ngOnChange() {
     console.log(this.Lists);
   }
 
   addNewTask(el: Task, stat: string) {
-    console.log("task-page.component got the new task: ");
-    console.log(el);
     el.list_id = this.selectedList;
     el.status = stat;
-    //need to send to server
     this.tasksService.addNewTask(el).subscribe(
       data => {
-            // console.log(data);
-            // this.Lists.push(data);
+            this.replaceList(this.selectedList);
       },
       error => {
         this.err = error._body;
-        //this.loading = false;
       });
+  }
+
+  deleteTask(el: Task){
+      console.log(el);
+  }
+
+  moveTask(el: Task){
+    console.log('task-page.component');
+    this.tasksService.moveTask(el).subscribe(      data => {
+      this.replaceList(this.selectedList);
+},
+error => {
+  this.err = error._body;
+});
   }
 }

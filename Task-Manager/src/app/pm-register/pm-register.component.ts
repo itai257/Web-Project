@@ -27,7 +27,7 @@ export class PmRegisterComponent implements OnInit {
   register() {
     this.loading = true;
     this.err = "";
-    this.userModel.firstName = this.fname;
+    this.userModel.firstname = this.fname;
     this.userModel.lastname = this.lname;
     this.userModel.email = this.email;
     this.userModel.password = this.password;

@@ -16,8 +16,8 @@
             <div class="col-xs-2"></div>
             <div class="col-xs-10 chekcbox-label date-label">{{task.start_date? task.start_date:"Unknown Date"}} - {{task.end_date? task.end_date:"Unknown Date"}}</div>
             <div class="col-xs-8"></div>
-            <div class="col-xs-1"><span class="glyphicon glyphicon-pencil" title="Move Task!"></span></div>
-            <div class="col-xs-1"><span class="glyphicon glyphicon-trash" title="delete task"></span></div>
+            <div class="col-xs-1"><a class="glyphicon glyphicon-pencil" title="Move Task!" (click)="moveTask(task)"></a></div>
+            <div class="col-xs-1"><a class="glyphicon glyphicon-trash" title="delete task" (click)="deleteTask(task)"></a></div>
         </div>
 
         <!-- end task-->

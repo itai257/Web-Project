@@ -17,6 +17,8 @@ export class TasksBoxComponent implements OnInit {
   @Input() boxId: string;
   @Input() tasks: Task[]= [];
   @Output() addTaskEvent: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output() deleteTaskEvent: EventEmitter<Task> = new EventEmitter<Task>();
+  @Output() moveTaskEvent: EventEmitter<Task> = new EventEmitter<Task>();
   err;
   constructor() { }
 
@@ -30,12 +32,19 @@ export class TasksBoxComponent implements OnInit {
   addTask(form: NgForm) {
     this.err = "";
     if (this.task.start_date > this.task.end_date) {
-        console.log("starting date bigger than ending date");
         this.err = "starting date bigger than ending date";
         return;
     }
-    console.log('Adding Event');
-    console.log(this.task);
     this.addTaskEvent.emit(this.task);
+  }
+
+  moveTask(task: Task) {
+    console.log(task);
+    this.moveTaskEvent.emit(task);
+  }
+
+  deleteTask(task: Task) {
+    console.log(task);
+    this.deleteTaskEvent.emit(task);
   }
 }

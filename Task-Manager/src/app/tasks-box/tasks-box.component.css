@@ -84,4 +84,7 @@
 
 }
 
-
+.glyphicon.glyphicon-trash, .glyphicon.glyphicon-pencil{
+    cursor: pointer;
+    color: #647182;
+}
