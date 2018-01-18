@@ -132,6 +132,8 @@ this.listService.deleteList(listid)
       data => {
             console.log(data);
             this.Lists.push(data);
+            this.replaceList(data.id);
+            this.selectedList = data.id;
       },
       error => {
         this.err = error._body;
@@ -156,7 +158,6 @@ this.listService.deleteList(listid)
   }
 
   deleteTask(el: Task){
-      console.log(el);
       this.tasksService.deleteTask(el).subscribe(      data => {
         this.replaceList(this.selectedList);
   },
@@ -166,7 +167,6 @@ this.listService.deleteList(listid)
   }
 
   moveTask(el: Task){
-    console.log('task-page.component');
     this.tasksService.moveTask(el).subscribe(      data => {
       this.replaceList(this.selectedList);
 },

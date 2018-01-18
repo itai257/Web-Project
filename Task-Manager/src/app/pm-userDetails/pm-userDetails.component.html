@@ -5,7 +5,7 @@
            <div class="col-md-6 col-xs-12">
                                 <div class="container-fluid" style="height:100%">
                                 
-                                <form class="form-horizontal" #form="ngForm" (ngSubmit)="form.valid && login()" novalidate>
+                                <form class="form-horizontal" #form="ngForm" (ngSubmit)="form.valid && updateDetails()" novalidate>
                                     <fieldset>
                                      <div class="userdetails-title">Details</div>
 
@@ -21,23 +21,23 @@
                                       </div>
 
                                       <div class="form-group" [class.has-error]="firstNameNgm.dirty && firstNameNgm.invalid">
-                                        <label for="inputPassword" class="col-lg-2 control-label">first name:</label>
+                                        <label for="firstName" class="col-lg-2 control-label">first name:</label>
                                         <div class="col-lg-10">
                                             <div class="input-group" style="width: 100%">
-                                          <input type="password" class="form-control" name="password" required [(ngModel)]="firstName" #firstNameNgm='ngModel'  pTooltip="Enter your first name" tooltipPosition="right" tooltipEvent="focus">
+                                          <input type="text" class="form-control" name="firstName" required [(ngModel)]="firstName" #firstNameNgm='ngModel'  pTooltip="Enter your first name" tooltipPosition="right" tooltipEvent="focus">
                                             </div>
-                                            <div *ngIf="firstNameNgm.dirty && firstNameNgm.invalid" class="danger">* Required field password </div>
+                                            <div *ngIf="firstNameNgm.dirty && firstNameNgm.invalid" class="danger">* Required field first name </div>
                                         </div>
                                       </div>
 
 
                                       <div class="form-group" [class.has-error]="lastNameNgm.dirty && lastNameNgm.invalid">
-                                        <label for="inputPassword" class="col-lg-2 control-label">last name:</label>
+                                        <label for="lastName" class="col-lg-2 control-label">last name:</label>
                                         <div class="col-lg-10">
                                             <div class="input-group" style="width: 100%">
-                                          <input type="password" class="form-control" name="lastName" required [(ngModel)]="lastName" #lastNameNgm='ngModel'  pTooltip="Enter your last name" tooltipPosition="right" tooltipEvent="focus">
+                                          <input type="text" class="form-control" name="lastName" required [(ngModel)]="lastName" #lastNameNgm='ngModel'  pTooltip="Enter your last name" tooltipPosition="right" tooltipEvent="focus">
                                             </div>
-                                            <div *ngIf="lastNameNgm.dirty && lastNameNgm.invalid" class="danger">* Required field password </div>
+                                            <div *ngIf="lastNameNgm.dirty && lastNameNgm.invalid" class="danger">* Required field last name </div>
                                         </div>
                                       </div>
 
@@ -46,7 +46,7 @@
                                           <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                                           <div class="col-lg-10">
                                               <div class="input-group" style="width: 100%">
-                                            <input type="password" class="form-control" placeholder="Password" name="password" required [(ngModel)]="password" #passwordNgm='ngModel'  pTooltip="Enter your password" tooltipPosition="right" tooltipEvent="focus">
+                                            <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password" #passwordNgm='ngModel'  pTooltip="Enter your password" tooltipPosition="right" tooltipEvent="focus">
                                               </div>
                                               <div *ngIf="passwordNgm.dirty && passwordNgm.invalid" class="danger">* Required field password </div>
                                           </div>
@@ -54,7 +54,7 @@
                                         <div class="form-group" [class.has-error]="vpasswordNgm.dirty && vpasswordNgm.invalid">
                                           <label for="vpassword" class="col-lg-2 control-label">Veify Password</label>
                                           <div class="col-lg-10">
-                                            <input type="password" class="form-control" name="vpassword" placeholder="Veify Password" required [(ngModel)]="vpassword" #vpasswordNgm='ngModel' pTooltip='Verify your password' tooltipPosition='right' tooltipEvent='focus'>
+                                            <input type="password" class="form-control" name="vpassword" placeholder="Veify Password" [required]="password ? 'true' : 'false'" [(ngModel)]="vpassword" #vpasswordNgm='ngModel' pTooltip='Verify your password' tooltipPosition='right' tooltipEvent='focus'>
                                             <div *ngIf="vpasswordNgm.dirty && vpasswordNgm.invalid" class="danger">* Required field Verify password </div>
                                              <div *ngIf="vpassword!=password && vpasswordNgm.dirty" class="danger">* Passwords does not match</div>
                                           </div>
@@ -62,7 +62,7 @@
                                       <div class="form-group">
                                         <div class="col-lg-10 col-lg-offset-2">
                                           <button type="reset" class="btn btn-default">Cancel</button>
-                                          <button type="submit" class="btn btn-primary" [disabled]="form.invalid || loading">Update</button>
+                                          <button type="submit" class="btn btn-primary" [disabled]="form.invalid || loading ">Update</button>
                                         </div>
 
                                       </div>

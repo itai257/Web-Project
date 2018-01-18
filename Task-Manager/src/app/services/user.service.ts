@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from './../../models/user.model';
 import { Injectable } from '@angular/core';
@@ -15,7 +16,7 @@ export class UserService {
   private baseUrl: string;
 
   constructor(private http: Http, private gatewayConfig: GatewayConfig, private authenticationService: AuthenticationService,
-     private router: Router) {
+     private router: Router, private httpclient: HttpClient) {
     this.baseUrl = `http://${gatewayConfig.ip}:${gatewayConfig.port}`;
   }
 
@@ -43,4 +44,17 @@ export class UserService {
       });
   }
 
+
+  updateDetails(user: User) {
+    console.log('update details user service');
+    return this.http.put(this.baseUrl + '/api/user', {
+      id: localStorage.getItem('currentUserId'),
+      firstName: user.firstname,
+      LastName: user.lastname,
+      password: user.password
+    })
+      .map((response: Response) => {
+          return response;
+      });
+  }
 }
