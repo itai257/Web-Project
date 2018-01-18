@@ -36,12 +36,18 @@ export class TasksPageComponent implements OnInit {
     this.sortByfilter = filter;
     if (filter === "task name") {
           this.currentTasks_open = this.currentTasks_open.sort(( a, b) => (a.title > b.title ? 1 : -1));
+          this.currentTasks_doing = this.currentTasks_doing.sort(( a, b) => (a.title > b.title ? 1 : -1));
+          this.currentTasks_done = this.currentTasks_done.sort(( a, b) => (a.title > b.title ? 1 : -1));
     }
     if (filter === "start date") {
       this.currentTasks_open = this.currentTasks_open.sort(( a, b) => (a.start_date > b.start_date ? 1 : -1));
+      this.currentTasks_doing = this.currentTasks_doing.sort(( a, b) => (a.start_date > b.start_date ? 1 : -1));
+      this.currentTasks_done = this.currentTasks_done.sort(( a, b) => (a.start_date > b.start_date ? 1 : -1));
       }
     if (filter === "end date") {
         this.currentTasks_open = this.currentTasks_open.sort(( a, b) => (a.end_date > b.end_date ? 1 : -1));
+        this.currentTasks_doing = this.currentTasks_doing.sort(( a, b) => (a.end_date > b.end_date ? 1 : -1));
+        this.currentTasks_done = this.currentTasks_done.sort(( a, b) => (a.end_date > b.end_date ? 1 : -1));
         }
   }
   get tasksFilter(): string{

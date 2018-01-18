@@ -16,7 +16,7 @@
             <div class="col-xs-2"></div>
             <div class="col-xs-10 chekcbox-label date-label">{{task.start_date? task.start_date:"Unknown Date"}} - {{task.end_date? task.end_date:"Unknown Date"}}</div>
             <div class="col-xs-8"></div>
-            <div class="col-xs-1"><a class="glyphicon glyphicon-pencil" title="Move Task!" (click)="moveTask(task)"></a></div>
+            <div class="col-xs-1" *ngIf="boxId !='DoneTasks' "><a class="glyphicon glyphicon-pencil" title="Move Task!" (click)="moveTask(task)"></a></div>
             <div class="col-xs-1"><a class="glyphicon glyphicon-trash" title="delete task" (click)="deleteTask(task)"></a></div>
         </div>
 
@@ -33,13 +33,6 @@
     <div class="date-label">from:</div>    
     </div>
         <div class="col-xs-8">
-                    <!-- <div class="input-group date" data-provide="datepicker" >
-                            
-                        <input type="text" class="form-control date-input" name="startingdate"  [(ngModel)]="task.start_date">
-                        <div class="input-group-addon">
-                            <span class="glyphicon glyphicon-th"></span>
-                        </div>
-                    </div> -->
                     
                     <p-calendar [(ngModel)]="task.start_date" name="startDate" [showIcon]="true" item-width="100%" ></p-calendar>
                 
