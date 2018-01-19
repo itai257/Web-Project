@@ -19,6 +19,26 @@ export class AuthenticationService {
     this.baseUrl = `http://${gatewayConfig.ip}:${gatewayConfig.port}`;
   }
 
+    forgotPassword(user: User){
+      return this.http.put(this.baseUrl + '/api/authenticate', {
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname
+      })
+      .map((response: Response) => {
+        const obj = response.json();
+        // tslint:disable-next-line:no-shadowed-variable
+        if (response && obj) {
+          return response;
+          // localStorage.setItem('currentUser', JSON.stringify(obj));
+          // localStorage.setItem('currentUserId', JSON.stringify(id));
+          // localStorage.setItem('isLoggedIn', 'true');
+          // this.user = <User> Object.assign(true, {}, obj);
+          // this.userSubject.next(this.user);
+          // this.isLoggedIn = true;
+        }
+      });
+    }
 
     login(email: string, password: string) {
     return this.http.post(this.baseUrl + '/api/authenticate', { email: email, password: password })

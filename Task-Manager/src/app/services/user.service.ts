@@ -46,7 +46,6 @@ export class UserService {
 
 
   updateDetails(user: User) {
-    console.log('update details user service');
     return this.http.put(this.baseUrl + '/api/user', {
       id: localStorage.getItem('currentUserId'),
       firstName: user.firstname,

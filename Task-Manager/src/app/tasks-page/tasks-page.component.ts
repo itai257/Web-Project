@@ -40,14 +40,62 @@ export class TasksPageComponent implements OnInit {
           this.currentTasks_done = this.currentTasks_done.sort(( a, b) => (a.title > b.title ? 1 : -1));
     }
     if (filter === "start date") {
-      this.currentTasks_open = this.currentTasks_open.sort(( a, b) => (a.start_date > b.start_date ? 1 : -1));
-      this.currentTasks_doing = this.currentTasks_doing.sort(( a, b) => (a.start_date > b.start_date ? 1 : -1));
-      this.currentTasks_done = this.currentTasks_done.sort(( a, b) => (a.start_date > b.start_date ? 1 : -1));
+      this.currentTasks_open = this.currentTasks_open.sort(( a, b) => {
+        if (a.start_date == null) {
+          return 1;
+        }
+        if (b.start_date == null) {
+          return -1;
+        }
+        return (a.start_date > b.start_date ? 1 : -1);
+    });
+      this.currentTasks_doing = this.currentTasks_doing.sort(( a, b) => {
+                                        if (a.start_date == null) {
+                                          return 1;
+                                        }
+                                        if (b.start_date == null) {
+                                          return -1;
+                                        }
+                                        return (a.start_date > b.start_date ? 1 : -1);
+                                    });
+      this.currentTasks_done = this.currentTasks_done.sort(( a, b) => {
+        if (a.start_date == null) {
+          return 1;
+        }
+        if (b.start_date == null) {
+          return -1;
+        }
+        return (a.start_date > b.start_date ? 1 : -1);
+    });
       }
     if (filter === "end date") {
-        this.currentTasks_open = this.currentTasks_open.sort(( a, b) => (a.end_date > b.end_date ? 1 : -1));
-        this.currentTasks_doing = this.currentTasks_doing.sort(( a, b) => (a.end_date > b.end_date ? 1 : -1));
-        this.currentTasks_done = this.currentTasks_done.sort(( a, b) => (a.end_date > b.end_date ? 1 : -1));
+        this.currentTasks_open = this.currentTasks_open.sort(( a, b) => {
+          if (a.end_date == null) {
+            return 1;
+          }
+          if (b.end_date == null) {
+            return -1;
+          }
+          return (a.end_date > b.end_date ? 1 : -1);
+      });
+        this.currentTasks_doing = this.currentTasks_doing.sort(( a, b) => {
+          if (a.end_date == null) {
+            return 1;
+          }
+          if (b.end_date == null) {
+            return -1;
+          }
+          return (a.end_date > b.end_date ? 1 : -1);
+      });
+        this.currentTasks_done = this.currentTasks_done.sort(( a, b) => {
+          if (a.end_date == null) {
+            return 1;
+          }
+          if (b.end_date == null) {
+            return -1;
+          }
+          return (a.end_date > b.end_date ? 1 : -1);
+      });
         }
   }
   get tasksFilter(): string{
@@ -59,12 +107,15 @@ export class TasksPageComponent implements OnInit {
     this.assignTasks(this.filteredTasks);
   }
   ngOnInit() {
+    this.currentTasks_open = [];
+    this.currentTasks_doing = [];
+    this.currentTasks_done = [];
     this.listService.getAllLists(localStorage.getItem('currentUserId'))
     .subscribe(list => {
       this.Lists = list;
       if (this.Lists.length > 0) {
-        this.selectedList = this.Lists[0].id;
-            this.tasksService.getAllTasks(this.Lists[0].id).subscribe(
+        this.selectedList = this.selectedList ? this.selectedList : this.Lists[0].id;
+            this.tasksService.getAllTasks(this.selectedList).subscribe(
               task => {
                 this.filteredTasks = task;
                 this.allTasks = task;
@@ -83,7 +134,7 @@ export class TasksPageComponent implements OnInit {
         task.title.toLocaleLowerCase().indexOf(filter) !== -1);
   }
 deleteList(listid) {
-
+if(listid === this.selectedList) this.selectedList = "";
 this.listService.deleteList(listid)
   .subscribe(data => {
         this.ngOnInit();

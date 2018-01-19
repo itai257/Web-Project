@@ -18,6 +18,7 @@ export class PmUserDetailsComponent implements OnInit {
   currUser: User;
   updateUser: User;
   err = "";
+  succ = "";
   loading = false;
   constructor(private router: Router,
               private userservice: UserService, private authenticationService: AuthenticationService) {
@@ -32,6 +33,7 @@ export class PmUserDetailsComponent implements OnInit {
   }
 
   updateDetails() {
+            this.err = this.succ = "";
              this.loading = true;
               this.updateUser = new User();
               this.updateUser.firstname = this.firstName;
@@ -44,6 +46,7 @@ export class PmUserDetailsComponent implements OnInit {
                   d => {
                     this.loading = false;
                     this.router.navigate(['/userdetails']);
+                    this.succ = "User updated!";
                   },
                   error => { // if registratin succeedded but login didnt then go to login page
                     this.router.navigate(['/login']);

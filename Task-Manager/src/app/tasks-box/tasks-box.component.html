@@ -1,6 +1,6 @@
 <div class="panel n">  
 <div class="panel-heading panel-open" [style.background-color]='titleColor'>
-  <h3 class="panel-title">{{boxTitle}}</h3>
+  <h3 class="panel-title">{{boxTitle}} <a *ngIf="selectedOpenTasksValues && selectedOpenTasksValues.length > 0" class="glyphicon glyphicon-trash" title="delete selected elements" style="float:right; color: white;" (click)="deleteSelectedTasks()"></a></h3>
 </div>
 <div class="panel-body">
     <div class="task-container">
@@ -14,7 +14,7 @@
                     {{ task.isTruncate? (task.title ) : (task.title | truncate)}}
             </div>
             <div class="col-xs-2"></div>
-            <div class="col-xs-10 chekcbox-label date-label">{{task.start_date? task.start_date:"Unknown Date"}} - {{task.end_date? task.end_date:"Unknown Date"}}</div>
+            <div class="col-xs-10 chekcbox-label date-label"  style="color:rgb(104, 104, 104)">{{task.start_date? (task.start_date | datetransform) : ''}} - {{task.end_date? (task.end_date | datetransform) : ''}}</div>
             <div class="col-xs-8"></div>
             <div class="col-xs-1" *ngIf="boxId !='DoneTasks' "><a class="glyphicon glyphicon-pencil" title="Move Task!" (click)="moveTask(task)"></a></div>
             <div class="col-xs-1"><a class="glyphicon glyphicon-trash" title="delete task" (click)="deleteTask(task)"></a></div>
@@ -34,7 +34,7 @@
     </div>
         <div class="col-xs-8">
                     
-                    <p-calendar [(ngModel)]="task.start_date" name="startDate" [showIcon]="true" item-width="100%" ></p-calendar>
+                    <p-calendar [(ngModel)]="task.start_date" name="startDate" [showIcon]="true" item-width="100%" dateFormat="dd/mm/yy" ></p-calendar>
                 
         </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="date-label">to:</div>    
     </div>
         <div class="col-xs-8">
-                <p-calendar [(ngModel)]="task.end_date" name="endDate" [showIcon]="true"></p-calendar>
+                <p-calendar [(ngModel)]="task.end_date" name="endDate" [showIcon]="true" dateFormat="dd/mm/yy"></p-calendar>
         </div>
     </div>
     <div class="row">

@@ -18,7 +18,8 @@ export class AppComponent implements OnInit {
     public authenticationService: AuthenticationService) {
       authenticationService.validate();
       router.events.filter(e => e instanceof NavigationEnd).subscribe((result: Event) => {
-        this.hideTopBar = result['url'].indexOf("login") !== -1 || result['url'].indexOf("register") !== -1;
+        this.hideTopBar = result['url'].indexOf("login") !== -1 || result['url'].indexOf("register") !== -1
+        || result['url'].indexOf("forgotpassword") !== -1;
       });
 
 }

@@ -1,3 +1,4 @@
+import { dateTransformPipe } from './date.pipe';
 import { PmUserDetailsComponent } from './pm-userDetails/pm-userDetails.component';
 import { ListService } from './services/list.service';
 import { GatewayConfig } from './app.config';
@@ -40,7 +41,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PmLoginComponent,
     ForgotPasswordComponent,
     TasksBoxComponent,
-    PmUserDetailsComponent
+    PmUserDetailsComponent,
+    dateTransformPipe
   ],
   imports: [
     HttpClientModule,

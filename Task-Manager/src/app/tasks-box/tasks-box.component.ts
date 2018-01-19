@@ -36,15 +36,20 @@ export class TasksBoxComponent implements OnInit {
         return;
     }
     this.addTaskEvent.emit(this.task);
+    this.task = new Task();
   }
 
   moveTask(task: Task) {
-    console.log(task);
     this.moveTaskEvent.emit(task);
   }
-
+  deleteSelectedTasks(){
+    for (const taskid of this.selectedOpenTasksValues) {
+        const taskToSend = this.tasks.filter(e => e.id == taskid);
+        this.deleteTask(taskToSend[0]);
+    }
+    this.selectedOpenTasksValues = [];
+  }
   deleteTask(task: Task) {
-    console.log(task);
     this.deleteTaskEvent.emit(task);
   }
 }

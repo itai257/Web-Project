@@ -75,7 +75,7 @@
                   </div>
 
                   <div class="col-md-10 col-xs-12 tasks-plane">
-                                        <div class="row">
+                                        <div class="row" *ngIf="selectedList">
                                             <div class="col-md-4">
                                                     <app-tasks-box titleColor="{{'#77a8d1'}}" boxTitle="{{'Open Tasks'}}" [boxId]="'OpenTasks'" [tasks]="currentTasks_open" (addTaskEvent)="addNewTask($event,'open')" (deleteTaskEvent)="deleteTask($event)" (moveTaskEvent)="moveTask($event)"></app-tasks-box>
                                             </div>
