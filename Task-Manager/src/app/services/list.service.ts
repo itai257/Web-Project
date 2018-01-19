@@ -39,7 +39,6 @@ export class ListService {
 
   }
   deleteList(listId) {
-    console.log("asd");
     const headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Access-Control-Allow-Origin', '*');
     const options = new RequestOptions({ headers: headers });

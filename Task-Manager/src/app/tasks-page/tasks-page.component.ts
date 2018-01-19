@@ -187,7 +187,6 @@ this.listService.deleteList(listid)
     newList.user_id = localStorage.getItem('currentUserId');
     this.listService.addList(newList).subscribe(
       data => {
-            console.log(data);
             this.Lists.push(data);
             this.replaceList(data.id);
             this.selectedList = data.id;
@@ -199,7 +198,6 @@ this.listService.deleteList(listid)
   }
 
   ngOnChange() {
-    console.log(this.Lists);
   }
 
   addNewTask(el: Task, stat: string) {

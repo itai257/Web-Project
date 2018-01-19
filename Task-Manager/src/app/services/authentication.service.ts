@@ -30,12 +30,6 @@ export class AuthenticationService {
         // tslint:disable-next-line:no-shadowed-variable
         if (response && obj) {
           return response;
-          // localStorage.setItem('currentUser', JSON.stringify(obj));
-          // localStorage.setItem('currentUserId', JSON.stringify(id));
-          // localStorage.setItem('isLoggedIn', 'true');
-          // this.user = <User> Object.assign(true, {}, obj);
-          // this.userSubject.next(this.user);
-          // this.isLoggedIn = true;
         }
       });
     }
